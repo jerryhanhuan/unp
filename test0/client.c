@@ -11,7 +11,7 @@
 
 int main(int argc,char **argv)
 {
-
+    int ret = 0;
     int sockfd = 0;
     char ip[16]={0};
     int port = 0;
@@ -36,7 +36,7 @@ int main(int argc,char **argv)
     svraddr.sin_port = htons(port);
     inet_pton(AF_INET,ip,&(svraddr.sin_addr));
 
-    if((ret = connect(sockfd,(strcut sockaddr*)&svraddr,sizeof(svraddr)))<0)
+    if((ret = connect(sockfd,(struct sockaddr*)&svraddr,sizeof(svraddr)))<0)
     {
         perror("connect failed");
         close(sockfd);
@@ -50,7 +50,7 @@ int main(int argc,char **argv)
         memset(sendbuf,0,sizeof(sendbuf));
         memset(recvbuf,0,sizeof(recvbuf));
         printf("input msg::");
-        scanf("%s",sendbuf);
+        ret = scanf("%s",sendbuf);
         len = send(sockfd,sendbuf,strlen(sendbuf),0);
         printf("send len[%d] buf[%s]\n",len,sendbuf);
         len = recv(sockfd,recvbuf,sizeof(recvbuf),0);
