@@ -50,7 +50,7 @@ int main(int argc, char **argv)
         memset(recvbuf, 0, sizeof(recvbuf));
         printf("input msg::");
         // ret = scanf("%[^\n]",sendbuf);
-        fgets(sendbuf, sizeof(sendbuf), stdin);
+        sendbuf = fgets(sendbuf, sizeof(sendbuf), stdin);
         len = send(sockfd, sendbuf, strlen(sendbuf), 0);
         printf("send len[%d] buf[%s]\n", len, sendbuf);
         len = recv(sockfd, recvbuf, sizeof(recvbuf), 0);
