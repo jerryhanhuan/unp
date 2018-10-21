@@ -93,7 +93,7 @@ int main(int argc, char **argv)
             }
             printf("recv len[%d] buf[%s]\n", len, recv_buf);
             printf("input msg::");
-            ret = scanf("%s", send_buf);
+            ret = scanf("%[^\n]", send_buf);
             len = send(accept_fd, send_buf, strlen(send_buf), 0);
             if (len < 0)
             {
