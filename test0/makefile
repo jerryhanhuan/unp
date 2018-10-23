@@ -1,7 +1,7 @@
 
 CC = gcc
 CFLAGS = -m64 -O1
-INC = -I ./ -I ../include
+INC = -I ./ 
 DEFINES = $(CFLAGS) $(INC)
 
 cli_objs = client.o 
@@ -10,7 +10,10 @@ cli = client
 svr_obj = server.o
 svr = server
 
-all:$(cli) $(svr) final
+simple_cli_objs = cli.o
+simple_cli = cli
+
+all:$(cli) $(svr) $(simple_cli) final
 
 %.o:%.cpp
 	$(CC) $(DEFINES) -c $<
@@ -22,6 +25,10 @@ $(cli):$(cli_objs)
 
 $(svr):$(svr_obj)
 	$(CC) -o $(svr) $(svr_obj)
+
+$(simple_cli):$(simple_cli_objs)
+	$(CC) -o $(simple_cli) $(simple_cli_objs)
+
 
 final:$(null)
 	rm -rf *.o
