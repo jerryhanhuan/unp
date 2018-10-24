@@ -72,7 +72,8 @@ int main(int argc, char **argv)
     if ((accept_fd = accept(sockfd, (struct sockaddr *)&cliaddr, &rlen)) < 0)
     {
         perror("accept failed");
-        continue;
+        close(sockfd);
+	return -1;
     }
     inet_ntop(AF_INET, &cliaddr.sin_addr, cli_ip, sizeof(cli_ip));
     cli_port = ntohs(cliaddr.sin_port);

@@ -5,7 +5,7 @@ INCL = -I ./
 DEFINES = $(CFLAGS) $(INCL)
 
 cli_objs = client.o
-exe_cli = cli
+exe_cli = client
 
 svr_objs = server.o
 exe_svr = server
@@ -21,7 +21,7 @@ all:$(exe_cli) $(exe_svr) final
 $(exe_cli):$(cli_objs)
 	$(CC) -o $(exe_cli) $(cli_objs)
 $(exe_svr):$(svr_objs)
-	$(CC) -o $(exe_svr) $(cli_objs)
+	$(CC) -o $(exe_svr) $(svr_objs)
 
 final:$(null)
 	rm -rf *.o
