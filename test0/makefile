@@ -10,10 +10,7 @@ cli = client
 svr_obj = server.o
 svr = server
 
-simple_cli_objs = cli.o
-simple_cli = cli
-
-all:$(cli) $(svr) $(simple_cli) final
+all:$(cli) $(svr) final
 
 %.o:%.cpp
 	$(CC) $(DEFINES) -c $<
@@ -25,9 +22,6 @@ $(cli):$(cli_objs)
 
 $(svr):$(svr_obj)
 	$(CC) -o $(svr) $(svr_obj)
-
-$(simple_cli):$(simple_cli_objs)
-	$(CC) -o $(simple_cli) $(simple_cli_objs)
 
 
 final:$(null)

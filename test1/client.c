@@ -54,7 +54,6 @@ int main(int argc, char **argv)
     printf("send len[%d]  buf[%s]\n", len, sendbuf);
     len = recv(sockfd, recvbuf, sizeof(recvbuf), 0);
     printf("recv len[%d] buf[%s]\n", len, recvbuf);
-
     close(sockfd);
     return 0;
 }
